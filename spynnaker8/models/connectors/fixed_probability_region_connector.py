@@ -31,11 +31,11 @@ class FixedProbabilityRegionConnector(CommonFixedProbabilityRegionConnector):
             constant. Cell pairs outside the maximum (euclidean) distance do \
             not connect.
 
-        :param pre_shape: shape (rows, columns, cells per region) for the \
+        :param pre_shape: shape (rows, columns, cells per coordinate) for the \
         pre-synaptic population.
         :type pre_shape: iterable
         
-        :param post_shape: shape (rows, columns, cells per region) for the \
+        :param post_shape: shape (rows, columns, cells per coordinate) for the \
         post-synaptic population.
         :type post_shape: float
         
