@@ -107,6 +107,9 @@ from spynnaker.pyNN.models.neuron.builds.if_cond_exp_base import (
 from spynnaker.pyNN.models.neuron.builds.if_curr_exp_base import (
     IFCurrExpBase as IF_curr_exp)
 # noinspection PyUnresolvedReferences
+from spynnaker.pyNN.models.neuron.builds.if_curr_exp_conv import (
+    IFCurrExpConv as IF_curr_exp_conv)
+# noinspection PyUnresolvedReferences
 from spynnaker.pyNN.models.neuron.builds.if_curr_alpha import (
     IFCurrAlpha as IF_curr_alpha)
 # noinspection PyUnresolvedReferences
