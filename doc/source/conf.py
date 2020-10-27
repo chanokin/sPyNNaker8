@@ -49,21 +49,28 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
-    'sphinx.ext.intersphinx'
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
 ]
 
-INTERSPHINX_PATTERN = 'http://{}.readthedocs.io/en/latest/'
+_READTHEDOCS_PATTERN = 'https://{}.readthedocs.io/en/latest/'
 intersphinx_mapping = {
-    'spinn_machine': (INTERSPHINX_PATTERN.format('spinnmachine'), None),
-    'spinn_storage_handlers': (
-        INTERSPHINX_PATTERN.format('spinnmachine'), None),
-    'spinnman': (INTERSPHINX_PATTERN.format('spinnman'), None),
-    'pacman': (INTERSPHINX_PATTERN.format('pacman'), None),
+    'python': ('https://docs.python.org/3.6', None),
+    'numpy': ("https://numpy.org/doc/stable/", None),
+    'maplotlib': ('https://matplotlib.org', None),
+    'pynn': ("http://neuralensemble.org/docs/PyNN/", None),
+    'neo': (_READTHEDOCS_PATTERN.format('neo'), None),
+    # We don't link to quantities; their docs are too shit
+    # 'quantities': (_READTHEDOCS_PATTERN.format('python-quantities'), None),
+    'spinn_utilities': (_READTHEDOCS_PATTERN.format('spinnutils'), None),
+    'spinn_machine': (_READTHEDOCS_PATTERN.format('spinnmachine'), None),
+    'spinnman': (_READTHEDOCS_PATTERN.format('spinnman'), None),
+    'pacman': (_READTHEDOCS_PATTERN.format('pacman'), None),
     'data_specification': (
-        INTERSPHINX_PATTERN.format('dataspecification'), None),
+        _READTHEDOCS_PATTERN.format('dataspecification'), None),
     'spinn_front_end_common': (
-        INTERSPHINX_PATTERN.format('spinnfrontendcommon'), None),
-    'spynnaker': (INTERSPHINX_PATTERN.format('spynnaker'), None)}
+        _READTHEDOCS_PATTERN.format('spinnfrontendcommon'), None),
+    'spynnaker': (_READTHEDOCS_PATTERN.format('spynnaker'), None)}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -213,6 +220,9 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'sPyNNaker8doc'
 
+# Where to get the mathjax javascript library from because the default is
+# horribly outdated in some versions of Sphinx.
+mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -231,8 +241,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'sPyNNaker8.tex',
-   u'sPyNNaker8 Documentation', u'', 'manual'),
+    ('index', 'sPyNNaker8.tex',
+     u'sPyNNaker8 Documentation', u'', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -276,9 +286,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'sPyNNaker8',
-   u'sPyNNaker8 Documentation', u'', 'sPyNNaker', '',
-   'Miscellaneous'),
+    ('index', 'sPyNNaker8',
+     u'sPyNNaker8 Documentation', u'', 'sPyNNaker', '',
+     'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
@@ -377,4 +387,16 @@ for f in os.listdir("."):
     if (os.path.isfile(f) and f.endswith(
             ".rst") and f != "index.rst" and f != "modules.rst"):
         os.remove(f)
-apidoc.main([None, '-o', ".", "../../spynnaker8"])
+apidoc.main([None, '-o', ".", "../../spynnaker8",
+             "../../spynnaker8/models/connectors/[a-z]*.py",
+             "../../spynnaker8/models/[drv]*.py",
+             "../../spynnaker8/models/populations/[a-z]*.py",
+             "../../spynnaker8/models/projection.py",
+             "../../spynnaker8/models/synapse_dynamics/s*.py",
+             "../../spynnaker8/models/synapse_dynamics/*/[a-z]*.py",
+             "../../spynnaker8/utilities/random_stats/[a-z]*.py",
+             "../../spynnaker8/utilities/id.py",
+             "../../spynnaker8/setup_pynn.py",
+             "../../spynnaker8/spinnaker.py",
+             "../../spynnaker8/spynnaker8_simulation_interface.py",
+             ])
