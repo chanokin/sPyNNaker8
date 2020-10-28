@@ -34,10 +34,12 @@ from .multapse_connector import MultapseConnector as FixedTotalNumberConnector
 from .one_to_one_connector import OneToOneConnector
 from .small_world_connector import SmallWorldConnector
 from .kernel_connector import KernelConnector
+from .convolution_connector import ConvolutionConnector
 
 __all__ = ["AllToAllConnector", "ArrayConnector", "CSAConnector",
            "DistanceDependentProbabilityConnector", "FixedNumberPostConnector",
            "FixedNumberPreConnector", "FixedProbabilityConnector",
            "FromFileConnector", "FromListConnector",
            "IndexBasedProbabilityConnector", "FixedTotalNumberConnector",
-           "OneToOneConnector", "SmallWorldConnector", "KernelConnector"]
+           "OneToOneConnector", "SmallWorldConnector", "KernelConnector",
+           "ConvolutionConnector"]

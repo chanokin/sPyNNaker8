@@ -69,6 +69,9 @@ from spynnaker8.models.connectors.small_world_connector import (
 # noinspection PyUnresolvedReferences
 from spynnaker8.models.connectors.kernel_connector import (
     KernelConnector)
+# noinspection PyUnresolvedReferences
+from spynnaker8.models.connectors.convolution_connector import (
+    ConvolutionConnector)
 
 # synapse structures
 from spynnaker8.models.synapse_dynamics.synapse_dynamics_static import (
@@ -162,7 +165,7 @@ __all__ = [
     'FixedNumberPreConnector', 'FixedProbabilityConnector',
     'FromFileConnector', 'FromListConnector', 'IndexBasedProbabilityConnector',
     'FixedTotalNumberConnector', 'OneToOneConnector', 'SmallWorldConnector',
-    'KernelConnector',
+    'KernelConnector', 'ConvolutionConnector',
     # synapse structures
     'StaticSynapse',
     # plastic stuff
