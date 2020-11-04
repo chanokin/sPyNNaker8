@@ -31,7 +31,8 @@ class ConvolutionConnector(CommonConvolutionConnector):
     __slots__ = []
 
     def __init__(
-            self, shape_pre, shape_post, shape_kernel, padding=(0,0),
+            self, shape_pre, shape_kernel,
+            strides=(1, 1), padding=(0, 0),
             weight_kernel=None, delay_kernel=None, shape_common=None,
             pre_sample_steps_in_post=None, pre_start_coords_in_post=None,
             post_sample_steps_in_pre=None, post_start_coords_in_pre=None,
@@ -79,8 +80,8 @@ class ConvolutionConnector(CommonConvolutionConnector):
         """
         # pylint: disable=too-many-arguments, unused-argument
         super(ConvolutionConnector, self).__init__(
-            shape_pre, shape_post, shape_kernel, weight_kernel,
+            shape_pre, shape_kernel,
+            strides, padding, weight_kernel,
             delay_kernel, shape_common, pre_sample_steps_in_post,
-            pre_start_coords_in_post, post_sample_steps_in_pre,
-            post_start_coords_in_pre, safe=safe, verbose=verbose,
+            pre_start_coords_in_post, safe=safe, verbose=verbose,
             callback=callback)
