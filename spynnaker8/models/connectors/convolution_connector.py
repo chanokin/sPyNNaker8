@@ -28,7 +28,7 @@ class ConvolutionConnector(CommonConvolutionConnector):
 
         Should these include `allow_self_connections` and `with_replacement`?
     """
-    __slots__ = []
+    # __slots__ = []
 
     def __init__(
             self, shape_pre, weights_kernel,
