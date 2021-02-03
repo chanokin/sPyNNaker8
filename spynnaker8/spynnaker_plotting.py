@@ -30,13 +30,13 @@ except ImportError:
 
 
 def _handle_options(ax, options):
-    """ Handles options that can not be passed to axes.plot
+    """ Handles options that can not be passed to locations.plot
 
     Removes the ones it has handled
 
-    axes.plot will throw an exception if it gets unwanted options
+    locations.plot will throw an exception if it gets unwanted options
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param dict options: All options the plotter can be configured with
     """
     if "xticks" not in options or options.pop("xticks") is False:
@@ -60,7 +60,7 @@ def _handle_options(ax, options):
 def _plot_spikes(ax, spike_times, neurons, label='', **options):
     """ Plots the spikes based on two lists
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param list(~neo.core.SpikeTrain) spike_times: List of Spiketimes
     :param neurons: List of Neuron Ids
     :param str label: Label for the graph
@@ -80,7 +80,7 @@ def _plot_spikes(ax, spike_times, neurons, label='', **options):
 def plot_spiketrains(ax, spiketrains, label='', **options):
     """ Plot all spike trains in a Segment in a raster plot.
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param list(~neo.core.SpikeTrain) spiketrains: List of spiketimes
     :param str label: Label for the graph
     :param options: plotting options
@@ -97,7 +97,7 @@ def plot_spiketrains(ax, spiketrains, label='', **options):
 def plot_spikes_numpy(ax, spikes, label='', **options):
     """ Plot all spikes
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param ~numpy.ndarray spikes: spynakker7 format nparray of spikes
     :param str label: Label for the graph
     :param options: plotting options
@@ -111,7 +111,7 @@ def plot_spikes_numpy(ax, spikes, label='', **options):
 def _heat_plot(ax, neurons, times, values, label='', **options):
     """ Plots three lists of neurons, times and values into a heatmap
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param neurons: List of neuron IDs
     :param times: List of times
     :param values: List of values to plot
@@ -134,7 +134,7 @@ def _heat_plot(ax, neurons, times, values, label='', **options):
 def heat_plot_numpy(ax, data, label='', **options):
     """ Plots neurons, times and values into a heatmap
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param ~numpy.ndarray data: nparray of values in spynnaker7 format
     :param str label: Label for the graph
     :param options: plotting options
@@ -148,7 +148,7 @@ def heat_plot_numpy(ax, data, label='', **options):
 def heat_plot_neo(ax, signal_array, label='', **options):
     """ Plots neurons, times and values into a heatmap
 
-    :param ~matplotlib.axes.Axes ax: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes ax: An Axes in a matplotlib figure
     :param ~neo.core.AnalogSignal signal_array: Neo Signal array Object
     :param str label: Label for the graph
     :param options: plotting options
@@ -176,7 +176,7 @@ def plot_segment(axes, segment, label='', **options):
         method signature defined by pynn plotting.\
         This allows mixing of this plotting tool and pynn's
 
-    :param ~matplotlib.axes.Axes axes: An Axes in a matplotlib figure
+    :param ~matplotlib.locations.Axes axes: An Axes in a matplotlib figure
     :param ~neo.core.Segment segment: Data for one run to plot
     :param str label: Label for the graph
     :param options: plotting options
@@ -252,7 +252,7 @@ class SpynnakerPanel(object):
     def plot(self, axes):
         """ Plot the Panel's data in the provided Axes/Subplot instance.
 
-        :param ~matplotlib.axes.Axes axes: An Axes in a matplotlib figure
+        :param ~matplotlib.locations.Axes axes: An Axes in a matplotlib figure
         """
         for datum, label, properties in zip(self.data, self.data_labels,
                                             self.line_properties):
